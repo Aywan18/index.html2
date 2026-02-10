@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Rechner</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+<div class="p-3 bg-white rounded shadow text-center">
+  <h4>Multi-Taschenrechner</h4>
+  <label>Z1 <input id="z1" type="number" class="form-control d-inline w-50"></label>
+  <label>Z2 <input id="z2" type="number" class="form-control d-inline w-50"></label>
+  <div id="erg" class="fw-bold my-2">Ergebnis hier</div>
+  <button class="btn btn-success m-1" onclick="c('+')">+</button>
+  <button class="btn btn-warning m-1" onclick="c('-')">−</button>
+  <button class="btn btn-info m-1" onclick="c('*')">×</button>
+  <button class="btn btn-danger m-1" onclick="c('/')">÷</button>
+  <button class="btn btn-outline-secondary mt-2" onclick="r()">Löschen</button>
+</div>
+
+<script>
+function c(o){
+  let x=+z1.value,y=+z2.value;
+  if(!x&&!x!==0||!y&&!y!==0){erg.textContent='Bitte Zahlen eingeben';return;}
+  if(o=='/'&&y==0){erg.textContent='Division durch 0!';return;}
+  erg.textContent='Ergebnis: '+({'+':x+y,'-':x-y,'*':x*y,'/':x/y}[o]);
+}
+function r(){z1.value='';z2.value='';erg.textContent='Ergebnis hier';}
+</script>
+</body>
+</html>
